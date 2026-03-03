@@ -7,7 +7,7 @@ A comprehensive AI-powered document classification and invoice processing system
 - Backend: Python 3.11, FastAPI
 - AI/ML: OpenAI GPT-3.5, Langchain, Sentence-Transformers
 - Vector Database: Pinecone
-- Database: PostgreSQL, SQLAlchemy
+- Database: PostgreSQL
 - Email: Gmail IMAP 
 - Document Processing: PyPDF2, python-docx, pandas
 - Containerization: Docker, Docker Compose
