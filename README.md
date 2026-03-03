@@ -2,113 +2,22 @@
 
 A comprehensive AI-powered document classification and invoice processing system built with FastAPI, processing 100+ documents/day with 95% accuracy.
 
-## 🚀 Features
-
-- **AI-Powered Classification**: Automatic document categorization using OpenAI GPT-3.5
-- **Semantic Search**: Fast vector search (5s → 100ms) using Pinecone and sentence-transformers
-- **Gmail Integration**: Automated attachment extraction with OAuth2 authentication
-- **Multi-Format Support**: PDF, CSV, DOCX, XLSX document parsing
-- **RESTful API**: 15+ endpoints for complete document management
-- **Real-time Analytics**: Dashboard with statistics and trends
-- **Secure Authentication**: JWT-based OAuth2 with bcrypt password hashing
-
 ## 🛠️ Tech Stack
 
-- **Backend**: Python 3.11, FastAPI
-- **AI/ML**: OpenAI GPT-3.5, Langchain, Sentence-Transformers
-- **Vector Database**: Pinecone
-- **Database**: PostgreSQL, SQLAlchemy
-- **Email**: Gmail API with OAuth2
-- **Document Processing**: PyPDF2, python-docx, pandas
-- **Caching**: Redis
-- **Task Queue**: Celery
-- **Containerization**: Docker, Docker Compose
+- Backend: Python 3.11, FastAPI
+- AI/ML: OpenAI GPT-3.5, Langchain, Sentence-Transformers
+- Vector Database: Pinecone
+- Database: PostgreSQL, SQLAlchemy
+- Email: Gmail IMAP 
+- Document Processing: PyPDF2, python-docx, pandas
+- Containerization: Docker, Docker Compose
 
-## 📋 Prerequisites
+Prerequisites
 
 - Python 3.9+
 - PostgreSQL 12+
-- Redis 6+
 - OpenAI API Key
-- Pinecone API Key
-- Gmail API Credentials
-
-## ⚙️ Installation
-
-### 1. Clone the repository
-
-```bash
-git clone <repository-url>
-cd ai-invoice-automation
-```
-
-### 2. Create virtual environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Configure environment
-
-```bash
-cp .env.example .env
-# Edit .env with your API keys and configuration
-```
-
-### 5. Setup database
-
-```bash
-# Create PostgreSQL database
-createdb invoice_db
-
-# Run migrations
-python scripts/seed_data.py
-```
-
-### 6. Setup Gmail API
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project
-3. Enable Gmail API
-4. Create OAuth2 credentials
-5. Download credentials as `credentials.json`
-
-## 🚀 Running the Application
-
-### Development Mode
-
-```bash
-# Start the FastAPI server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Using Docker
-
-```bash
-# Build and run with Docker Compose
-cd docker
-docker-compose up --build
-```
-
-### Production Mode
-
-```bash
-# Using Gunicorn with Uvicorn workers
-gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
-```
-
-## 📚 API Documentation
-
-Once the server is running, visit:
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+- Gmail IMAP Credentials
 
 ## 🔑 API Endpoints
 
@@ -158,74 +67,13 @@ Once the server is running, visit:
 - `POST /api/v1/classification/summarize` - Generate summary
 - `POST /api/v1/classification/question` - Answer questions about document
 
-## 🔧 Configuration
-
-Key environment variables in `.env`:
-
-```env
-# OpenAI
-OPENAI_API_KEY=your-key-here
-OPENAI_MODEL=gpt-3.5-turbo
-
-# Pinecone
-PINECONE_API_KEY=your-key-here
-PINECONE_INDEX_NAME=invoice-embeddings
-
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/invoice_db
-
-# Security
-SECRET_KEY=your-secret-key-here
-
-# Gmail
-GMAIL_CREDENTIALS_FILE=credentials.json
-```
 
 ## 📊 Performance Metrics
 
-- **Document Processing**: 100+ documents/day
-- **Classification Accuracy**: 95%
-- **Search Speed**: 100ms (reduced from 5s)
-- **API Endpoints**: 15+ RESTful endpoints
-- **Supported Formats**: PDF, CSV, DOCX, XLSX
+- Document Processing: 100+ documents/day
+- Classification Accuracy: 95%
+- Search Speed: 100ms (reduced from 5s)
+- API Endpoints: 15+ RESTful endpoints
+- Supported Formats: PDF, CSV, DOCX, XLSX
 
-## 🧪 Testing
 
-```bash
-# Run tests
-pytest tests/
-
-# With coverage
-pytest --cov=app tests/
-```
-
-## 📝 Automated Gmail Sync
-
-Setup cron job for automated Gmail synchronization:
-
-```bash
-# Edit crontab
-crontab -e
-
-# Add this line to run every 5 minutes
-*/5 * * * * /path/to/venv/bin/python /path/to/scripts/cron_gmail_sync.py
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- OpenAI for GPT-3.5 API
-- Pinecone for vector database
-- FastAPI framework
-- Google Gmail API
