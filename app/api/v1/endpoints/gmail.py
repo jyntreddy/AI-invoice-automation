@@ -107,6 +107,10 @@ async def sync_gmail_attachments(
         if not gmail_service.service:
             gmail_service.authenticate()
         
+        # Create upload directory
+        upload_dir = os.path.join(settings.UPLOAD_DIR, 'public', 'gmail')
+        os.makedirs(upload_dir, exist_ok=True)
+        
         # Get messages with attachments
         file_types = file_types or settings.ALLOWED_EXTENSIONS
         messages = gmail_service.get_messages_with_attachments(

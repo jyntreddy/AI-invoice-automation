@@ -1,6 +1,4 @@
-"""
-Streamlit Configuration File
-"""
+# Streamlit Configuration File
 
 [theme]
 primaryColor = "#FF4B4B"
